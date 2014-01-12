@@ -3,8 +3,8 @@
     <div class="well sidebar-nav">
         <ul class="nav nav-list">
             <li class="nav-header">Gestionar</li>
-            <li><a href="<%=contextPath%>/adm/empleado/empleado">Empleados</a></li>
-            <li><a href="<%=contextPath%>/adm/cliente/cliente">Clientes</a></li>
+            <li><a href="<%=contextPath%>/empleado.jsp">Empleados</a></li>
+            <li><a href="<%=contextPath%>/cliente.jsp">Clientes</a></li>
            
             
             <!--12/01/2014-->
