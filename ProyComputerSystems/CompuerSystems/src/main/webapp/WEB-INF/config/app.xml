@@ -3,19 +3,47 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		           http://www.springframework.org/schema/mvc 
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+                           http://www.springframework.org/schema/task 
+                           http://www.springframework.org/schema/task/spring-task-3.2.xsd
+                           http://www.springframework.org/schema/util 
+                           http://www.springframework.org/schema/util/spring-util-3.2.xsd">
  
     <!-- ya no ira el scan en datbase sino aqui-->    
     <context:component-scan base-package="app" />
 	
     <mvc:annotation-driven /><!-- Indica a Spring scannear controller classes -->
     
+    <!--
     <mvc:resources mapping="/img/**" location="/img/" /> 
     <mvc:resources mapping="/public/**" location="/public/" />
-        
-        
+    -->
+    <mvc:resources mapping="/**" location="/public/"/>
+    
+    <!-- No se está incluyendo el tema de los mail como lo tiene sygnos -->
+    
+    <bean id="webTemplateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver"
+              p:prefix ="/WEB-INF/app/"
+              p:suffix =".html"/>
+    
+     <!-- EL Q ES REAL tipo SYGNOS         
+     <bean id="webTemplateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver"
+              p:order="2" 
+              p:prefix ="/WEB-INF/app/"
+              p:suffix =".jsp"
+              p:characterEncoding="UTF-8"
+              p:cacheable="false"
+              p:templateMode="HTML5"/> 
+    -->    
+    <!--           
     <bean id="paramResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
         <property name="paramName" value="action" />
     </bean>
@@ -25,5 +53,38 @@
         <property name="prefix" value="/WEB-INF/app/" />
         <property name="suffix" value=".jsp"/>
     </bean>
+    -->
+    <util:set id="resolvers">
+        <ref  bean="webTemplateResolver" />
+        <!--<ref  bean="emailTemplateResolver" />-->
+    </util:set>
+    
+    <util:set id="additionalDialects">
+        <bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+    </util:set>
+    
+    <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine"
+          p:templateResolvers-ref="resolvers"
+          p:additionalDialects-ref="additionalDialects" />
+    
+    
+    <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver" 
+          p:templateEngine-ref="templateEngine" />
+    
+    <!-- Falta realizar       
+    <bean name="requestDataValueProcessor" class="app.zelper.controller.ConversationIdRequestProcessor"/>
+     
+    <bean id="conversationalSessionAttributeStore" class="app.zelper.controller.ConversationalSessionAttributeStore"
+          p:keepAliveConversations="10"/>
+    
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+          p:maxUploadSize="60000000" />
+    
+    <bean id="typesUtil" class="app.zelper.misc.TypesUtil"/>
+    --> 
+    
+    <task:annotation-driven/> 
+    
     
 </beans>

@@ -42,6 +42,6 @@ public class AuthController {
             model.addAttribute("loginError", true);
         }
 
-        return "security/login";
+        return "login/login";
     }
 }
