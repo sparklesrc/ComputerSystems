@@ -3,12 +3,29 @@ package app.zelper;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 
+ * @author SparKLes
+ * 
+ * Descripcion: Aqui se guarda los tipos de Usuario <ROLES> que usaran el sistema
+ * PCS como Administrador del Sistema
+ * ADMINISTRADOR como ADMIN para la Empresa cliente
+ * EMPLEADO de la empresa
+ */
+
 public enum RolesEnum {
 
-    ADMIN("ADMIN"), VENDEDOR("VENDEDOR"), CLIENTE("CLIENTE");
+    PCS(0),
+    ADMINISTRADOR(1), 
+    EMPLEADO(2);
     
-    private final String value;
-    private static final Map<String, RolesEnum> lookup = new HashMap<String, RolesEnum>();
+    private Integer val;
+    
+    private static final Map<Integer, RolesEnum> lookup = new HashMap<Integer, RolesEnum>();
+
+    RolesEnum(Integer val) {
+        this.val = val;
+    }
 
     static {
         for (RolesEnum d : RolesEnum.values()) {
@@ -16,15 +33,11 @@ public enum RolesEnum {
         }
     }
 
-    private RolesEnum(String value) {
-        this.value = value;
+    public int getValue() {
+        return val;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public static RolesEnum get(String abbreviation) {
+    public static RolesEnum get(Integer abbreviation) {
         return lookup.get(abbreviation);
     }
 }

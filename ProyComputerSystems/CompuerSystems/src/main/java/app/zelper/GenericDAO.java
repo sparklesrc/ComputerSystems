@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface GenericDAO<T> {
 
-    public List<T> list();
+    public List<T> listDAO();
 
-    public T get(T t);
+    public T getDAO(T t);
 
-    public void save(T t);
+    public void saveDAO(T t);
 
-    public void update(T t);
+    public void updateDAO(T t);
 
-    public void delete(T t);
+    public void deleteDAO(T t);
 
 }

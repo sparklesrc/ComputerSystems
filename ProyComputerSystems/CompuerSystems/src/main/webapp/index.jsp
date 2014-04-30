@@ -11,7 +11,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        
+        <a href="<%=contextPath%>/login">LOGIN</a>
         <%@include file="/public/footer.jsp" %>
     </body>
 </html>
