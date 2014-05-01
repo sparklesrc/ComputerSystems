@@ -2,53 +2,60 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.controller.pcs.empresa;
+package app.dao.hibernate;
 
 import app.dao.EmpresaDAO;
 import app.model.Empresa;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author SparKLes
  */
-@Service
-public class EmpresaServiceImp implements EmpresaService{
+@Repository
+public class EmpresaDAOH extends HibernateTemplate implements EmpresaDAO {
 
     @Autowired
-    EmpresaDAO empresaDAO;
-    
-    @Override
-    public List<Empresa> getEmpresas() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return empresaDAO.getAllDAO();
+    public EmpresaDAOH(SessionFactory sessionFactory) {
+        super(sessionFactory);
     }
 
     @Override
-    public Empresa getEmpresa(Empresa empresa) {
+    public void addDAO(Empresa t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return empresaDAO.getDAO(empresa);
+        this.save(t);
     }
 
     @Override
-    public void addEmpresa(Empresa empresa) {
+    public void updateDAO(Empresa t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        empresaDAO.addDAO(empresa);
+        this.merge(t);
     }
 
     @Override
-    public void updateEmpresa(Empresa empresa) {
+    public void deleteDAO(Empresa t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        empresaDAO.updateDAO(empresa);
+        this.delete(t);
     }
 
     @Override
-    public void deleteEmpresa(Empresa empresa) {
+    public Empresa getDAO(Empresa t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        empresaDAO.deleteDAO(empresa);
+        Criteria criteria = this.getSession().createCriteria(Empresa.class);
+        criteria.add(Restrictions.eq("id", t.getId()));
+        return (Empresa) criteria.uniqueResult();
     }
-    
-    
+
+    @Override
+    public List<Empresa> getAllDAO() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Criteria criteria = this.getSession().createCriteria(Empresa.class);
+        return criteria.list();
+    }
 }

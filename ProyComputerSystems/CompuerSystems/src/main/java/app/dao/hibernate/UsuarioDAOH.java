@@ -40,24 +40,11 @@ public class UsuarioDAOH extends HibernateTemplate implements UsuarioDAO{
     }
 
     @Override
-    public List<Usuario> listDAO() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Criteria criteria = this.getSession().createCriteria(Usuario.class);
-        return criteria.list();
-    }
-
-    @Override
     public Usuario getDAO(Usuario t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Criteria criteria = this.getSession().createCriteria(Usuario.class);
         criteria.add(Restrictions.eq("id", t.getId()));
         return (Usuario)criteria.uniqueResult();
-    }
-    
-    @Override
-    public void saveDAO(Usuario t) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        this.save(t);
     }
 
     @Override
@@ -72,6 +59,19 @@ public class UsuarioDAOH extends HibernateTemplate implements UsuarioDAO{
         //Product product = (Product) session.get(Product.class, productId); 
         //product.setProductDetail("new detail");
         this.delete(t);
+    }
+
+    @Override
+    public void addDAO(Usuario t) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.save(t);
+    }
+
+    @Override
+    public List<Usuario> getAllDAO() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Criteria criteria = this.getSession().createCriteria(Usuario.class);
+        return criteria.list();
     }
     
     

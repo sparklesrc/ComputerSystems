@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PCS - EMPRESAS</title>
+    <div th:substituteby="includes/header"/>
+</head>
+<body>
+    <div th:substituteby="includes/menu :: pcs"/>
+
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <div class="page-header">
+                    <h2 th:if="${empresa.id > 0}" th:text="${empresa.nombre}">Editar </h2>
+                    <h2 th:unless="${empresa.id > 0}">Nueva Empresa</h2>
+                </div>
+
+                <form class="form-horizontal" th:action="@{/pcs/empresa/save}" method="post" th:object="${empresa}">
+                    
+                    <input type="hidden" th:value="${_cid}" name="_cid"/>
+                    
+                    <div class="control-group" th:classappend="${#fields.hasErrors('nombre')} ? 'error' : ''">
+                        <label class="control-label">Nombre</label>
+
+                        <div class="controls"> <input type="text" name="nombre" th:field="*{nombre}" />
+                            <span class="help-inline" th:errors="*{nombre}">[error]</span>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" th:classappend="${#fields.hasErrors('ruc')} ? 'error' : ''">
+                        <label class="control-label">RUC</label>
+
+                        <div class="controls">
+                            <input type="text" name="ruc"  th:field="*{ruc}" />
+                            <span class="help-inline" th:errors="*{ruc}">[error]</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Contacto</label>
+                        <div class="controls">
+                            <input type="text" name="nombreContacto"  th:field="*{repre_legal}"/>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" th:classappend="${#fields.hasErrors('emailContacto')} ? 'error' : ''">
+                        <label class="control-label">Correo contacto</label>
+
+                        <div class="controls">
+                            <input type="text" name="emailContacto" th:field="*{emailContacto}"/>
+                            <span class="help-inline" th:errors="*{emailContacto}">[error]</span>
+                        </div>
+                    </div>
+
+                    
+                     <div class="control-group">
+                        <label class="control-label">Dirección</label>
+                        <div class="controls">
+                            <input type="text" name="direccion"  th:field="*{direccion}" />
+                        </div>
+                    </div>
+                    
+                    <div class="btn-toolbar pull-right">
+                        <div class="btn-group"> <a class="btn" href="#" th:href="@{/pcs/empresa/}"> Cancelar </a></div>
+                        <div class="btn-group"><input class="btn btn-primary" type="submit" value="Guardar"/></div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+<div  th:substituteby="includes/footer"/>
+</html>
+

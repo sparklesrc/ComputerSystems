@@ -27,13 +27,6 @@ public class PersonaDAOH extends HibernateTemplate implements PersonaDAO {
     }
 
     @Override
-    public List<Persona> listDAO() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Criteria criteria = this.getSession().createCriteria(Persona.class);
-        return criteria.list();
-    }
-
-    @Override
     public Persona getDAO(Persona t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Criteria criteria = this.getSession().createCriteria(Persona.class);
@@ -41,11 +34,6 @@ public class PersonaDAOH extends HibernateTemplate implements PersonaDAO {
         return (Persona) criteria.uniqueResult();
     }
 
-    @Override
-    public void saveDAO(Persona t) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        this.save(t);
-    }
 
     @Override
     public void updateDAO(Persona t) {
@@ -57,5 +45,18 @@ public class PersonaDAOH extends HibernateTemplate implements PersonaDAO {
     public void deleteDAO(Persona t) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         this.delete(t);
+    }
+
+    @Override
+    public void addDAO(Persona t) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.save(t);
+    }
+
+    @Override
+    public List<Persona> getAllDAO() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Criteria criteria = this.getSession().createCriteria(Persona.class);
+        return criteria.list();
     }
 }
