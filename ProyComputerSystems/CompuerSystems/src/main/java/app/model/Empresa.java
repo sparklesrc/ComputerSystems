@@ -5,6 +5,7 @@
 package app.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,10 +46,10 @@ public class Empresa implements Serializable {
     private String celular;
     @Column(name = "fecha_creacion")
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_creacion;
+    private Date fecha_creacion = new Date();
     @Column(name = "fecha_actualizacion")
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_actualizacion;
+    private Date fecha_actualizacion = new Date();
     @Column(name = "estado")
     private Byte estado;
 
@@ -139,6 +140,7 @@ public class Empresa implements Serializable {
     public void setFecha_creacion(Date fecha_creacion) {
         //Long time = System.currentTimeMillis();
         //time.
+
         this.fecha_creacion = fecha_creacion;
     }
 
