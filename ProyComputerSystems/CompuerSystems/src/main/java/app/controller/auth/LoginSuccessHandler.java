@@ -40,7 +40,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         System.out.println("EN LOGINSUCCESSHANDLER");
         
         if (autenticado.getTipo_usuario()== RolesEnum.PCS.getValue()) {
-            this.setDefaultTargetUrl("/pcs");
+            this.setDefaultTargetUrl("/pcs/empresa");
 
         } else if (autenticado.getTipo_usuario()== RolesEnum.ADMINISTRADOR.getValue()) {
             this.setDefaultTargetUrl("/adm");

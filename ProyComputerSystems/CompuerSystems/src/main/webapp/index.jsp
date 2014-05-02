@@ -5,13 +5,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inicio</title>
         
         <%@include file="/public/header.jsp" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <a href="<%=contextPath%>/login">LOGIN</a>
+        <h1>Sistema de Gestión</h1>
+        <a href="<%=contextPath%>/login">Iniciar Sesión</a>
         <%@include file="/public/footer.jsp" %>
     </body>
 </html>

@@ -40,8 +40,7 @@ public class EmpresaDAOH extends HibernateTemplate implements EmpresaDAO {
 
     @Override
     public void deleteDAO(Empresa t) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        this.delete(t);
+        this.save(t);
     }
 
     @Override
@@ -56,6 +55,7 @@ public class EmpresaDAOH extends HibernateTemplate implements EmpresaDAO {
     public List<Empresa> getAllDAO() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Criteria criteria = this.getSession().createCriteria(Empresa.class);
+        criteria.add(Restrictions.eq("estado", (byte)1));
         return criteria.list();
     }
 }

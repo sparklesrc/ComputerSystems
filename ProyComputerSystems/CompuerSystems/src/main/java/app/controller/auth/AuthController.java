@@ -27,7 +27,7 @@ public class AuthController {
 
         if (usuario != null) {
             if (usuario.getUsuario().getTipo_usuario()== RolesEnum.PCS.getValue()) {
-                return ("redirect:/pcs");
+                return ("redirect:/pcs/empresa");
 
             } else if (usuario.getUsuario().getTipo_usuario()== RolesEnum.ADMINISTRADOR.getValue()) {
                 return ("redirect:/adm");

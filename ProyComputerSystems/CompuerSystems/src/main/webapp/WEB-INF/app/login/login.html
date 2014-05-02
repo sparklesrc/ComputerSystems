@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>SIGNOS</title>
-    <div th:substituteby="includes/header"/>
+    <div th:substituteby="includes/header_login"/>
 </head>
 <body class="form-body">
     <form method="post" class="form-horizontal form_login" th:action="@{/j_spring_security_check}" >
@@ -34,11 +34,11 @@
         </div>
 
     </form>
-    <footer class="footer">
+    <!--footer class="footer">
         <div class="row text-right">
             <a target="_blank" href="http://www.albatross.pe" class="roll-link"><span data-title="Albatross">Albatross</span></a>
         </div>
-    </footer>
-    <div th:substituteby="includes/footer"/>
+    </footer-->
+    <div th:substituteby="includes/footer_login"/>
 </body>
 </html>

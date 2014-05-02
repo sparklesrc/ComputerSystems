@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PCS - EMPRESAS</title>
+        <title>PCS - EMPRSAS</title>
     <div th:substituteby="includes/header"/>
 </head>
 <body>
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="span8">
                 <div class="page-header">
-                    <h2 th:if="${empresa.id > 0}" th:text="${empresa.nombre}">Editar </h2>
+                    <h2 th:if="${empresa.id > 0}" th:text="${empresa.razon_social}">Editar </h2>
                     <h2 th:unless="${empresa.id > 0}">Nueva Empresa</h2>
                 </div>
 
@@ -19,11 +19,11 @@
                     
                     <input type="hidden" th:value="${_cid}" name="_cid"/>
                     
-                    <div class="control-group" th:classappend="${#fields.hasErrors('nombre')} ? 'error' : ''">
-                        <label class="control-label">Nombre</label>
+                    <div class="control-group" th:classappend="${#fields.hasErrors('razon_social')} ? 'error' : ''">
+                        <label class="control-label">Razon Social</label>
 
-                        <div class="controls"> <input type="text" name="nombre" th:field="*{nombre}" />
-                            <span class="help-inline" th:errors="*{nombre}">[error]</span>
+                        <div class="controls"> <input type="text" name="razon_social" th:field="*{razon_social}" />
+                            <span class="help-inline" th:errors="*{razon_social}">[error]</span>
                         </div>
                     </div>
 
@@ -36,31 +36,59 @@
                             <span class="help-inline" th:errors="*{ruc}">[error]</span>
                         </div>
                     </div>
-
+                    
                     <div class="control-group">
-                        <label class="control-label">Contacto</label>
+                        <label class="control-label">Sede Central</label>
                         <div class="controls">
-                            <input type="text" name="nombreContacto"  th:field="*{repre_legal}"/>
+                            <input type="text" name="sede_central"  th:field="*{sede_central}"/>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Representante Legal</label>
+                        <div class="controls">
+                            <input type="text" name="repre_legal"  th:field="*{repre_legal}"/>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Número de Admins</label>
+                        <div class="controls">
+                            <input type="text" name="nro_adm"  th:field="*{nro_adm}"/>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Número de Empleados</label>
+                        <div class="controls">
+                            <input type="text" name="nro_emp"  th:field="*{nro_emp}"/>
                         </div>
                     </div>
 
 
-                    <div class="control-group" th:classappend="${#fields.hasErrors('emailContacto')} ? 'error' : ''">
+                    <div class="control-group" th:classappend="${#fields.hasErrors('email')} ? 'error' : ''">
                         <label class="control-label">Correo contacto</label>
 
                         <div class="controls">
-                            <input type="text" name="emailContacto" th:field="*{emailContacto}"/>
-                            <span class="help-inline" th:errors="*{emailContacto}">[error]</span>
+                            <input type="text" name="email" th:field="*{email}"/>
+                            <span class="help-inline" th:errors="*{email}">[error]</span>
                         </div>
                     </div>
 
-                    
                      <div class="control-group">
-                        <label class="control-label">Dirección</label>
+                        <label class="control-label">Teléfono</label>
                         <div class="controls">
-                            <input type="text" name="direccion"  th:field="*{direccion}" />
+                            <input type="text" name="telefono"  th:field="*{telefono}" />
                         </div>
                     </div>
+                    
+                     <div class="control-group">
+                        <label class="control-label">Celular</label>
+                        <div class="controls">
+                            <input type="text" name="celular"  th:field="*{celular}" />
+                        </div>
+                    </div>
+
                     
                     <div class="btn-toolbar pull-right">
                         <div class="btn-group"> <a class="btn" href="#" th:href="@{/pcs/empresa/}"> Cancelar </a></div>
@@ -74,4 +102,3 @@
 </body>
 <div  th:substituteby="includes/footer"/>
 </html>
-

@@ -32,7 +32,9 @@
     
     <bean id="webTemplateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver"
               p:prefix ="/WEB-INF/app/"
-              p:suffix =".html"/>
+              p:suffix =".html"
+              p:characterEncoding="UTF-8"
+              p:cacheable="false"/>
     
      <!-- EL Q ES REAL tipo SYGNOS         
      <bean id="webTemplateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver"
@@ -41,7 +43,7 @@
               p:suffix =".jsp"
               p:characterEncoding="UTF-8"
               p:cacheable="false"
-              p:templateMode="HTML5"/> 
+              p:cacheable="false"/> 
     -->    
     <!--           
     <bean id="paramResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">

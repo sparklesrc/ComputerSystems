@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @SessionAttributes("empresa")
-@RequestMapping("/pcs")
+//@RequestMapping("/pcs")
 public class Saludo {
 
     @Autowired
@@ -35,9 +36,10 @@ public class Saludo {
      }
      */
 
-    @RequestMapping(method = RequestMethod.GET)
+    //@RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(HttpSession session) {
         //logger.warn("LOG INTO INDEX");
         return new ModelAndView("pcs/empresa/list", "empresas", service.getEmpresas());
     }
+
 }
